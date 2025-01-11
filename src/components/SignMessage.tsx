@@ -12,7 +12,7 @@ const SignMessage: React.FC = () => {
   useEffect(() => {
     const fetchNonce = async () => {
       const response = await axios.get(
-        `http://localhost:5001/getNonce/${address}`
+        `https://api.tacotrade.io/getNonce/${address}`
       );
       setNonce(response.data.nonce);
     };
@@ -37,7 +37,7 @@ const SignMessage: React.FC = () => {
 
         // Send the signed message to the backend for verification
         const response = await axios.post(
-          "http://localhost:5001/authenticate",
+          "https://api.tacotrade.io/authenticate",
           {
             address,
             message,
@@ -68,7 +68,7 @@ const SignMessage: React.FC = () => {
           </button>
         </div>
       ) : (
-        <p>Connect your wallet to sign the message</p>
+        <p>Connect your wallet to sign the message.</p>
       )}
     </div>
   );
